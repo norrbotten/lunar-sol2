@@ -3,6 +3,7 @@
         "*.txt": "glua",
         "*.make": "makefile",
         "unordered_map": "cpp",
-        "cstdio": "cpp"
+        "cstdio": "cpp",
+        "random": "cpp"
     }
 }

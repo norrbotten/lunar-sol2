@@ -31,11 +31,14 @@
 
 #define LUA_MINSTACK 20
 
+#define LUA_OK 0
 #define LUA_YIELD 1
 #define LUA_ERRRUN 2
 #define LUA_ERRSYNTAX 3
 #define LUA_ERRMEM 4
-#define LUA_ERRERR 5
+#define LUA_ERRGCMM 5
+#define LUA_ERRERR 6
+#define LUA_ERRFILE (LUA_ERRERR + 1)
 
 #define LUA_GCSTOP 0
 #define LUA_GCRESTART 1
@@ -96,8 +99,6 @@
 #define LUA_HOOKCOUNT 3
 #define LUA_HOOKTAILCALL 4
 
-#define LUA_ERRFILE (LUA_ERRERR + 1)
-
 #define LUA_LOADED_TABLE "_LOADED"
 
 #define LUA_PRELOAD_TABLE "_PRELOAD"
@@ -106,6 +107,11 @@
 #define LUA_REFNIL (-1)
 
 #define LUA_FILEHANDLE "FILE*"
+
+#define LUA_QL(x) "'" x "'"
+#define LUA_QS LUA_QL("%s")
+
+#define COMPAT53_LUA_FILE_BUFFER_SIZE 4096
 
 struct lua_State;
 typedef double lua_Number;
@@ -120,17 +126,21 @@ typedef void* (*lua_Alloc)(void* ud, void* ptr, size_t osize, size_t nsize);
 #define LUA_IDSIZE 60
 
 struct lua_Debug {
-    int         event;
-    const char* name;
-    const char* namewhat;
-    const char* what;
-    const char* source;
-    int         currentline;
-    int         nups;
-    int         linedefined;
-    int         lastlinedefined;
-    char        short_src[LUA_IDSIZE];
-    int         i_ci;
+    int           event;
+    const char*   name;                  /* (n) */
+    const char*   namewhat;              /* (n) 'global', 'local', 'field', 'method' */
+    const char*   what;                  /* (S) 'Lua', 'C', 'main', 'tail' */
+    const char*   source;                /* (S) */
+    int           currentline;           /* (l) */
+    int           linedefined;           /* (S) */
+    int           lastlinedefined;       /* (S) */
+    unsigned char nups;                  /* (u) number of upvalues */
+    unsigned char nparams;               /* (u) number of parameters */
+    char          isvararg;              /* (u) */
+    char          istailcall;            /* (t) */
+    char          short_src[LUA_IDSIZE]; /* (S) */
+    /* private part */
+    struct CallInfo* i_ci; /* active function */
 };
 
 typedef void (*lua_Hook)(lua_State* L, lua_Debug* ar);
@@ -149,3 +159,15 @@ typedef struct luaL_Buffer {
     lua_State* L;
     char       initb[LUAL_BUFFERSIZE];
 } luaL_Buffer;
+
+typedef struct luaL_Buffer_53 {
+    luaL_Buffer b;
+    char*       ptr;
+    size_t      nelems;
+    size_t      capacity;
+    lua_State*  L2;
+} luaL_Buffer_53;
+
+typedef struct luaL_Stream {
+    FILE* f;
+} luaL_Stream;

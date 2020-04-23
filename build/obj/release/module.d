@@ -1,4 +1,4 @@
-../build/obj/debug/module.o: ../module.cpp ../sol2/include/sol/sol.hpp \
+../build/obj/release/module.o: ../module.cpp ../sol2/include/sol/sol.hpp \
  ../sol2/include/sol/forward.hpp ../sol2/include/sol/feature_test.hpp \
  ../sol2/include/sol/config.hpp ../sol2/include/sol/config_setup.hpp \
  ../sol2/include/sol/forward_detail.hpp ../sol2/include/sol/traits.hpp \
@@ -9,6 +9,9 @@
  ../sol2/include/sol/compatibility/version.hpp ../lunar/luadef.hpp \
  ../lunar/symbols.hpp ../lunar/loader.hpp \
  ../sol2/include/sol/compatibility/compat-5.3.h \
+ ../sol2/include/sol/compatibility/compat-5.4.h \
+ ../sol2/include/sol/compatibility/compat-5.3.h \
+ ../sol2/include/sol/compatibility/compat-5.4.h \
  ../sol2/include/sol/stack.hpp ../sol2/include/sol/trampoline.hpp \
  ../sol2/include/sol/types.hpp ../sol2/include/sol/error.hpp \
  ../sol2/include/sol/optional.hpp ../sol2/include/sol/in_place.hpp \
@@ -109,6 +112,12 @@
 ../lunar/loader.hpp:
 
 ../sol2/include/sol/compatibility/compat-5.3.h:
+
+../sol2/include/sol/compatibility/compat-5.4.h:
+
+../sol2/include/sol/compatibility/compat-5.3.h:
+
+../sol2/include/sol/compatibility/compat-5.4.h:
 
 ../sol2/include/sol/stack.hpp:
 
