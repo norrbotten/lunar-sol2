@@ -1,12 +1,16 @@
 #include <sol/sol.hpp>
 
-#define DLLEXPORT extern "C" __attribute((visibility("default")))
+struct bong {
+    int a, b, c;
+};
 
 DLLEXPORT int gmod13_open(lua_State* L) {
     Lunar::Loader::Initialize();
 
     sol::state_view lua(L);
     lua.script("print('Hello, SOL2!')");
+
+    lua["my_function"] = [](int a, int b, int c) { return a + b + c; };
 
     return 0;
 }

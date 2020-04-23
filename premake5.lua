@@ -1,7 +1,17 @@
 
-local realm = "SERVER" -- this can be either CLIENT or SERVER
+ -- this can be either CLIENT or SERVER
+local realm = "SERVER"
 
+-- set this to true if youre compiling for windows systems
+local is_windows = false
+
+-- this only has an effect on WINDOWS builds
+local arch = "x32" -- x32 for 32-bit, x64 for 64-bit
+
+-- name of your module
 local module_name = "sol2-module"
+
+-- optional install directory for the 'install' action
 local install_dir = "/home/gmod_exp01/serverfiles/garrysmod/lua/bin/" -- should end with /
 
 function getModulePrefix()
@@ -42,6 +52,10 @@ project (module_name)
 
     if realm == "CLIENT" then
         defines { "LUNAR_CLIENT_MODULE" }
+    end
+
+    if is_windows and arch == "x64" then
+        defines { "LUNAR_WINDOWS_x64" }
     end
 
 function getCompiledBinaryPath()
