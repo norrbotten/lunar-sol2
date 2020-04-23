@@ -6,7 +6,7 @@ DLLEXPORT int gmod13_open(lua_State* L) {
     Lunar::Loader::Initialize();
 
     sol::state_view lua(L);
-    lua.script("print('bigbong')");
+    lua.script("print('Hello, SOL2!')");
 
     return 0;
 }

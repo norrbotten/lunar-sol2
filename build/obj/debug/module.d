@@ -7,11 +7,10 @@
  ../sol2/include/sol/string_view.hpp ../sol2/include/sol/bytecode.hpp \
  ../sol2/include/sol/compatibility.hpp \
  ../sol2/include/sol/compatibility/version.hpp ../lunar/luadef.hpp \
- ../lunar/symbols.hpp ../lunar/loader.hpp \
- ../sol2/include/sol/compatibility/compat-5.3.h \
- ../sol2/include/sol/stack.hpp ../sol2/include/sol/trampoline.hpp \
- ../sol2/include/sol/types.hpp ../sol2/include/sol/error.hpp \
- ../sol2/include/sol/optional.hpp ../sol2/include/sol/in_place.hpp \
+ ../lunar/symbols.hpp ../lunar/loader.hpp ../sol2/include/sol/stack.hpp \
+ ../sol2/include/sol/trampoline.hpp ../sol2/include/sol/types.hpp \
+ ../sol2/include/sol/error.hpp ../sol2/include/sol/optional.hpp \
+ ../sol2/include/sol/in_place.hpp \
  ../sol2/include/sol/optional_implementation.hpp \
  ../sol2/include/sol/raii.hpp ../sol2/include/sol/policies.hpp \
  ../sol2/include/sol/ebco.hpp ../sol2/include/sol/map.hpp \
@@ -107,8 +106,6 @@
 ../lunar/symbols.hpp:
 
 ../lunar/loader.hpp:
-
-../sol2/include/sol/compatibility/compat-5.3.h:
 
 ../sol2/include/sol/stack.hpp:
 
