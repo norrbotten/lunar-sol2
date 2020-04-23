@@ -1,5 +1,7 @@
 #pragma once
 
+#if defined(__unix__)
+
 #include <cstdio>
 #include <dlfcn.h>
 #include <unordered_map>
@@ -57,3 +59,5 @@ auto CallSymbol = [](const char* name, Args... args) -> Ret {
 };
 
 } // namespace Lunar::Loader
+
+#endif

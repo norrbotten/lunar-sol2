@@ -1,5 +1,7 @@
 #pragma once
 
+#if defined(__WIN32__)
+
 #include <cstdio>
 #include <unordered_map>
 #include <windows.h>
@@ -48,3 +50,5 @@ auto CallSymbol = [](const char* name, Args... args) -> Ret {
 };
 
 } // namespace Lunar::Loader
+
+#endif
