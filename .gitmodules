@@ -1,0 +1,3 @@
+[submodule "sol2"]
+	path = sol2
+	url = https://github.com/norrbotten/g-sol2.git
