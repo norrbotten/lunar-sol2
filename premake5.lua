@@ -9,7 +9,7 @@ local is_windows = false
 local arch = "x32" -- x32 for 32-bit, x64 for 64-bit
 
 -- name of your module
-local module_name = "sol2-module"
+local module_name = "websocket"
 
 -- optional install directory for the 'install' action
 local install_dir = "/home/gmod_exp01/serverfiles/garrysmod/lua/bin/" -- should end with /
