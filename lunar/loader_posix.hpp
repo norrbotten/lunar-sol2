@@ -41,23 +41,6 @@ static void Deinitialize() {
     }
 }
 
-template <typename Ret, typename... Args>
-auto CallSymbol = [](const char* name, Args... args) -> Ret {
-    Ret (*symbol)(Args...);
-
-    if (symbol_map.find(name) != symbol_map.end()) {
-        *(void**)(&symbol) = symbol_map[name];
-    }
-    else {
-        auto* raw_symbol = dlsym(handle, name);
-        symbol_map[name] = raw_symbol;
-
-        *(void**)(&symbol) = raw_symbol;
-    }
-
-    return symbol(args...);
-};
-
 } // namespace Lunar::Loader
 
 #endif

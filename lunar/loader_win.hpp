@@ -43,11 +43,13 @@ static void Deinitialize() {
     }
 }
 
+/*
 template <typename Ret, typename... Args>
 auto CallSymbol = [](const char* name, Args... args) -> Ret {
     MYPROC symbol = (MYPROC)GetProcAddress(handle, name);
     symbol(args...);
 };
+*/
 
 } // namespace Lunar::Loader
 
