@@ -1,6 +1,6 @@
 #pragma once
 
-#if defined(__WIN32__)
+#ifdef __WIN32__
 
 #include <cstdio>
 #include <unordered_map>
@@ -10,7 +10,7 @@
 
 namespace Lunar::Loader {
 
-#if defined(LUNAR_WINDOWS_x64)
+#ifdef LUNAR_WINDOWS_x64
 constexpr auto LUA_MODULE_PATH = "./bin/win64/lua_shared.dll";
 #else
 constexpr auto LUA_MODULE_PATH = "./bin/lua_shared.dll";
@@ -43,13 +43,11 @@ static void Deinitialize() {
     }
 }
 
-/*
 template <typename Ret, typename... Args>
 auto CallSymbol = [](const char* name, Args... args) -> Ret {
     MYPROC symbol = (MYPROC)GetProcAddress(handle, name);
     symbol(args...);
 };
-*/
 
 } // namespace Lunar::Loader
 
